@@ -1,0 +1,42 @@
+========================================
+QUICK FIX FOR JAVAFX ERROR
+========================================
+
+The error "JavaFX runtime components are missing" occurs because JavaFX needs to be run with modules.
+
+SOLUTION 1: Use JavaFX Maven Plugin (Try this first)
+-----------------------------------------------------
+Run this command:
+
+mvn javafx:run
+
+This should work with the new JavafxLauncher class.
+
+SOLUTION 2: Use the Batch File
+-------------------------------
+Double-click: RUN.bat
+
+This will try the JavaFX plugin first, then fall back to exec plugin.
+
+SOLUTION 3: Use IntelliJ IDEA (Easiest - No Configuration Needed)
+------------------------------------------------------------------
+1. Download IntelliJ IDEA Community Edition (free)
+2. Open the library-management-system folder
+3. IntelliJ will automatically handle JavaFX
+4. Right-click JavafxLauncher.java > Run
+
+SOLUTION 4: Manual Run (If above don't work)
+---------------------------------------------
+1. Build: mvn clean package
+2. Find JavaFX JARs in: C:\Users\mbads\.m2\repository\org\openjfx\
+3. Run:
+   java --module-path "C:\Users\mbads\.m2\repository\org\openjfx\javafx-controls\21" --add-modules javafx.controls,javafx.fxml -jar target\library-management-system-1.0.0.jar
+
+========================================
+RECOMMENDED: Try Solution 1 first
+========================================
+
+Run: mvn javafx:run
+
+If that doesn't work, use IntelliJ IDEA (Solution 3) - it's the easiest!
+

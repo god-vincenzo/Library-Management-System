@@ -1,0 +1,62 @@
+========================================
+LIBRARY MANAGEMENT SYSTEM
+========================================
+HOW TO RUN THE PROJECT
+========================================
+
+QUICKEST WAY (Recommended):
+---------------------------
+1. Download IntelliJ IDEA Community Edition (FREE)
+   https://www.jetbrains.com/idea/download/
+
+2. Open IntelliJ IDEA
+
+3. File > Open > Select "library-management-system" folder
+
+4. Wait for Maven to download dependencies (2-5 minutes, first time only)
+
+5. Find "LibraryApplication.java" in the project tree
+
+6. Right-click > Run 'LibraryApplication.main()'
+
+7. Login with: admin / admin123
+
+DONE! No Maven installation needed!
+
+========================================
+
+ALTERNATIVE: Using Maven Command Line
+--------------------------------------
+1. Install Maven first (run RUN_ME_FIRST.bat as Admin)
+
+2. Open PowerShell in this folder
+
+3. Run: mvn clean install
+
+4. Run: mvn spring-boot:run
+
+5. Login with: admin / admin123
+
+========================================
+
+LOGIN CREDENTIALS:
+------------------
+Username: admin
+Password: admin123
+
+OR
+
+Username: librarian
+Password: lib123
+
+========================================
+
+NEED HELP?
+----------
+- See HOW_TO_RUN.md for detailed instructions
+- See README.md for full documentation
+- See BUILD_WITHOUT_MAVEN.md for IDE setup
+
+========================================
+
+

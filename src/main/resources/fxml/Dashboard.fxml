@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.library.ui.DashboardController">
+   <top>
+      <HBox spacing="15.0" styleClass="nav-bar">
+         <children>
+            <Label text="LIBRARY MANAGEMENT SYSTEM" styleClass="nav-title">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Region HBox.hgrow="ALWAYS" />
+            <Button onAction="#handleLogout" text="LOGOUT" styleClass="button-danger" style="-fx-pref-width: 100px;" />
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <TabPane tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab text="Dashboard">
+               <content>
+                  <ScrollPane fitToWidth="true" fitToHeight="true" style="-fx-background: transparent; -fx-background-color: transparent;">
+                     <VBox spacing="20.0">
+                        <padding>
+                           <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                        </padding>
+                        <children>
+                           <HBox spacing="20.0">
+                              <children>
+                                 <VBox spacing="8.0" styleClass="stat-card stat-card-blue" style="-fx-pref-width: 220;">
+                                    <children>
+                                       <Label text="Total Books" styleClass="stat-label" />
+                                       <Label fx:id="totalBooksLabel" text="0" styleClass="stat-value" />
+                                    </children>
+                                 </VBox>
+                                 <VBox spacing="8.0" styleClass="stat-card stat-card-green" style="-fx-pref-width: 220;">
+                                    <children>
+                                       <Label text="Available Books" styleClass="stat-label" />
+                                       <Label fx:id="availableBooksLabel" text="0" styleClass="stat-value" />
+                                    </children>
+                                 </VBox>
+                                 <VBox spacing="8.0" styleClass="stat-card stat-card-orange" style="-fx-pref-width: 220;">
+                                    <children>
+                                       <Label text="Total Members" styleClass="stat-label" />
+                                       <Label fx:id="totalMembersLabel" text="0" styleClass="stat-value" />
+                                    </children>
+                                 </VBox>
+                                 <VBox spacing="8.0" styleClass="stat-card stat-card-purple" style="-fx-pref-width: 220;">
+                                    <children>
+                                       <Label text="Issued Books" styleClass="stat-label" />
+                                       <Label fx:id="issuedBooksLabel" text="0" styleClass="stat-value" />
+                                    </children>
+                                 </VBox>
+                                 <VBox spacing="8.0" styleClass="stat-card stat-card-red" style="-fx-pref-width: 220;">
+                                    <children>
+                                       <Label text="Overdue Books" styleClass="stat-label" />
+                                       <Label fx:id="overdueBooksLabel" text="0" styleClass="stat-value" />
+                                    </children>
+                                 </VBox>
+                              </children>
+                           </HBox>
+                           <Button onAction="#handleRefresh" text="REFRESH STATISTICS" styleClass="button" style="-fx-pref-width: 200px;" />
+                        </children>
+                     </VBox>
+                  </ScrollPane>
+               </content>
+            </Tab>
+            <Tab text="Books">
+               <content>
+                  <ScrollPane fitToWidth="true" fitToHeight="true" style="-fx-background: transparent; -fx-background-color: transparent;">
+                     <VBox spacing="10.0">
+                        <padding>
+                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        </padding>
+                        <children>
+                           <HBox spacing="10.0">
+                              <children>
+                                 <TextField fx:id="bookSearchField" promptText="Search books..." styleClass="search-field" HBox.hgrow="ALWAYS" />
+                                 <Button onAction="#handleBookSearch" text="SEARCH" styleClass="button" />
+                              </children>
+                           </HBox>
+                           <TableView fx:id="booksTable" VBox.vgrow="ALWAYS" prefHeight="400.0">
+                              <columns>
+                                 <TableColumn fx:id="bookIdColumn" text="Book ID" prefWidth="80.0" />
+                                 <TableColumn fx:id="isbnColumn" text="ISBN" prefWidth="150.0" />
+                                 <TableColumn fx:id="titleColumn" text="Title" prefWidth="200.0" />
+                                 <TableColumn fx:id="authorColumn" text="Author" prefWidth="150.0" />
+                                 <TableColumn fx:id="categoryColumn" text="Category" prefWidth="120.0" />
+                                 <TableColumn fx:id="quantityColumn" text="Quantity" prefWidth="80.0" />
+                                 <TableColumn fx:id="availableColumn" text="Available" prefWidth="80.0" />
+                              </columns>
+                           </TableView>
+                           <HBox spacing="10.0">
+                              <children>
+                                 <Button onAction="#handleDeleteBook" text="DELETE SELECTED" styleClass="button-danger" />
+                              </children>
+                           </HBox>
+                        </children>
+                     </VBox>
+                  </ScrollPane>
+               </content>
+            </Tab>
+            <Tab text="Add Book">
+               <content>
+                  <BorderPane>
+                     <center>
+                        <ScrollPane fitToWidth="true" vbarPolicy="AS_NEEDED" hbarPolicy="NEVER" style="-fx-background: transparent; -fx-background-color: transparent;">
+                           <VBox spacing="20.0" styleClass="form-container">
+                              <padding>
+                                 <Insets bottom="20.0" left="25.0" right="25.0" top="25.0" />
+                              </padding>
+                              <children>
+                                 <Label text="ADD NEW BOOK" styleClass="label-heading" />
+                                 <VBox spacing="8.0">
+                                    <Label text="ISBN" styleClass="form-label" />
+                                    <TextField fx:id="addIsbnField" promptText="Enter ISBN" styleClass="text-field" />
+                                 </VBox>
+                                 <VBox spacing="8.0">
+                                    <Label text="Title" styleClass="form-label" />
+                                    <TextField fx:id="addTitleField" promptText="Enter book title" styleClass="text-field" />
+                                 </VBox>
+                                 <VBox spacing="8.0">
+                                    <Label text="Author" styleClass="form-label" />
+                                    <TextField fx:id="addAuthorField" promptText="Enter author name" styleClass="text-field" />
+                                 </VBox>
+                                 <VBox spacing="8.0">
+                                    <Label text="Publisher" styleClass="form-label" />
+                                    <TextField fx:id="addPublisherField" promptText="Enter publisher" styleClass="text-field" />
+                                 </VBox>
+                                 <VBox spacing="8.0">
+                                    <Label text="Category" styleClass="form-label" />
+                                    <TextField fx:id="addCategoryField" promptText="Enter category" styleClass="text-field" />
+                                 </VBox>
+                                 <VBox spacing="8.0">
+                                    <Label text="Quantity" styleClass="form-label" />
+                                    <TextField fx:id="addQuantityField" promptText="Enter quantity" styleClass="text-field" />
+                                 </VBox>
+                                 <VBox spacing="8.0">
+                                    <Label text="Shelf Location" styleClass="form-label" />
+                                    <TextField fx:id="addShelfField" promptText="Enter shelf location" styleClass="text-field" />
+                                 </VBox>
+                              </children>
+                           </VBox>
+                        </ScrollPane>
+                     </center>
+                     <bottom>
+                        <VBox spacing="15.0" styleClass="form-container">
+                           <padding>
+                              <Insets bottom="25.0" left="25.0" right="25.0" top="20.0" />
+                           </padding>
+                           <children>
+                              <Separator />
+                              <Button fx:id="addBookButton" onAction="#handleAddBook" text="ADD BOOK" styleClass="button-success" style="-fx-pref-height: 60px; -fx-min-height: 60px; -fx-max-width: Infinity; -fx-font-size: 18px; -fx-font-weight: bold;" />
+                           </children>
+                        </VBox>
+                     </bottom>
+                  </BorderPane>
+               </content>
+            </Tab>
+            <Tab text="Members">
+               <content>
+                  <ScrollPane fitToWidth="true" fitToHeight="true" style="-fx-background: transparent; -fx-background-color: transparent;">
+                     <VBox spacing="10.0">
+                        <padding>
+                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        </padding>
+                        <children>
+                           <HBox spacing="10.0">
+                              <children>
+                                 <TextField fx:id="memberSearchField" promptText="Search members..." styleClass="search-field" HBox.hgrow="ALWAYS" />
+                                 <Button onAction="#handleMemberSearch" text="SEARCH" styleClass="button" />
+                              </children>
+                           </HBox>
+                           <TableView fx:id="membersTable" VBox.vgrow="ALWAYS" prefHeight="400.0">
+                              <columns>
+                                 <TableColumn fx:id="memberIdColumn" text="Member ID" prefWidth="120.0" />
+                                 <TableColumn fx:id="nameColumn" text="Name" prefWidth="200.0" />
+                                 <TableColumn fx:id="emailColumn" text="Email" prefWidth="200.0" />
+                                 <TableColumn fx:id="phoneColumn" text="Phone" prefWidth="120.0" />
+                                 <TableColumn fx:id="statusColumn" text="Status" prefWidth="100.0" />
+                              </columns>
+                           </TableView>
+                           <HBox spacing="10.0">
+                              <children>
+                                 <Button onAction="#handleDeleteMember" text="DELETE SELECTED" styleClass="button-danger" />
+                              </children>
+                           </HBox>
+                        </children>
+                     </VBox>
+                  </ScrollPane>
+               </content>
+            </Tab>
+            <Tab text="Add Member">
+               <content>
+                  <ScrollPane fitToWidth="true" fitToHeight="true" style="-fx-background: transparent; -fx-background-color: transparent;">
+                     <VBox spacing="20.0" styleClass="form-container">
+                        <padding>
+                           <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                        </padding>
+                        <children>
+                           <Label text="ADD NEW MEMBER" styleClass="label-heading" />
+                           <VBox spacing="8.0">
+                              <Label text="Member ID (optional)" styleClass="form-label" />
+                              <TextField fx:id="addMemberIdField" promptText="Auto-generated if left empty" styleClass="text-field" />
+                           </VBox>
+                           <VBox spacing="8.0">
+                              <Label text="Name" styleClass="form-label" />
+                              <TextField fx:id="addMemberNameField" promptText="Enter member name" styleClass="text-field" />
+                           </VBox>
+                           <VBox spacing="8.0">
+                              <Label text="Email" styleClass="form-label" />
+                              <TextField fx:id="addMemberEmailField" promptText="Enter email address" styleClass="text-field" />
+                           </VBox>
+                           <VBox spacing="8.0">
+                              <Label text="Phone" styleClass="form-label" />
+                              <TextField fx:id="addMemberPhoneField" promptText="Enter phone number" styleClass="text-field" />
+                           </VBox>
+                           <VBox spacing="8.0">
+                              <Label text="Address" styleClass="form-label" />
+                              <TextField fx:id="addMemberAddressField" promptText="Enter address" styleClass="text-field" />
+                           </VBox>
+                           <Button onAction="#handleAddMember" text="ADD MEMBER" styleClass="button-success" style="-fx-pref-height: 45px; -fx-pref-width: 100%;" />
+                        </children>
+                     </VBox>
+                  </ScrollPane>
+               </content>
+            </Tab>
+            <Tab text="Issue/Return">
+               <content>
+                  <ScrollPane fitToWidth="true" fitToHeight="true" style="-fx-background: transparent; -fx-background-color: transparent;">
+                     <HBox spacing="20.0">
+                        <padding>
+                           <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                        </padding>
+                        <children>
+                           <VBox spacing="20.0" prefWidth="320.0" styleClass="form-container">
+                              <padding>
+                                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                              </padding>
+                              <children>
+                                 <Label text="ISSUE BOOK" styleClass="label-heading" />
+                                 <VBox spacing="8.0">
+                                    <Label text="Book ID" styleClass="form-label" />
+                                    <TextField fx:id="issueBookIdField" promptText="Enter book ID" styleClass="text-field" />
+                                 </VBox>
+                                 <VBox spacing="8.0">
+                                    <Label text="Member ID" styleClass="form-label" />
+                                    <TextField fx:id="issueMemberIdField" promptText="Enter member ID" styleClass="text-field" />
+                                 </VBox>
+                                 <Button onAction="#handleIssueBook" text="ISSUE BOOK" styleClass="button-primary" style="-fx-pref-height: 45px; -fx-pref-width: 100%;" />
+                              </children>
+                           </VBox>
+                           <VBox spacing="20.0" prefWidth="320.0" styleClass="form-container">
+                              <padding>
+                                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                              </padding>
+                              <children>
+                                 <Label text="RETURN BOOK" styleClass="label-heading" />
+                                 <VBox spacing="8.0">
+                                    <Label text="Transaction ID" styleClass="form-label" />
+                                    <TextField fx:id="returnTransactionIdField" promptText="Enter transaction ID" styleClass="text-field" />
+                                 </VBox>
+                                 <Button onAction="#handleReturnBook" text="RETURN BOOK" styleClass="button-success" style="-fx-pref-height: 45px; -fx-pref-width: 100%;" />
+                              </children>
+                           </VBox>
+                           <VBox spacing="15.0" VBox.vgrow="ALWAYS">
+                              <children>
+                                 <Label text="ACTIVE TRANSACTIONS" styleClass="label-heading" />
+                                 <TableView fx:id="transactionsTable" VBox.vgrow="ALWAYS" prefHeight="400.0">
+                                    <columns>
+                                       <TableColumn fx:id="transactionIdColumn" text="Transaction ID" prefWidth="120.0" />
+                                       <TableColumn fx:id="transactionBookColumn" text="Book" prefWidth="200.0" />
+                                       <TableColumn fx:id="transactionMemberColumn" text="Member" prefWidth="150.0" />
+                                       <TableColumn fx:id="issueDateColumn" text="Issue Date" prefWidth="120.0" />
+                                       <TableColumn fx:id="dueDateColumn" text="Due Date" prefWidth="120.0" />
+                                       <TableColumn fx:id="transactionStatusColumn" text="Status" prefWidth="100.0" />
+                                    </columns>
+                                 </TableView>
+                              </children>
+                           </VBox>
+                        </children>
+                     </HBox>
+                  </ScrollPane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </center>
+</BorderPane>
+

@@ -1,0 +1,29 @@
+========================================
+SINGLE COMMAND TO INSTALL MAVEN
+========================================
+
+Copy and paste this ENTIRE command into PowerShell as Administrator:
+
+========================================
+
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; if (-not (Get-Command choco -ErrorAction SilentlyContinue)) { Write-Host "Installing Chocolatey..." -ForegroundColor Yellow; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')); $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User") }; Write-Host "Installing Maven..." -ForegroundColor Yellow; choco install maven -y; Write-Host "`nMaven installed! Close and reopen PowerShell, then run: mvn -version" -ForegroundColor Green
+
+========================================
+
+STEPS:
+1. Right-click PowerShell > Run as Administrator
+2. Copy the entire command above
+3. Paste it into PowerShell and press Enter
+4. Wait for installation to complete (2-5 minutes)
+5. Close and reopen PowerShell
+6. Verify: mvn -version
+
+========================================
+
+ALTERNATIVE: If Chocolatey is already installed, just run:
+
+choco install maven -y
+
+========================================
+
+

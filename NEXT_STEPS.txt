@@ -1,0 +1,65 @@
+========================================
+✅ BUILD SUCCESSFUL!
+========================================
+
+Your Library Management System has been built successfully!
+
+========================================
+NEXT STEPS - RUN THE APPLICATION
+========================================
+
+Option 1: Run using Maven (Recommended)
+----------------------------------------
+Open PowerShell in the library-management-system folder and run:
+
+mvn spring-boot:run
+
+This will start the application and open the login window.
+
+========================================
+
+Option 2: Run using the Batch File
+-----------------------------------
+Double-click: RUN_NOW.bat
+
+This will build and run the application automatically.
+
+========================================
+
+Option 3: Run the JAR file directly
+------------------------------------
+java -jar target\library-management-system-1.0.0.jar
+
+========================================
+
+LOGIN CREDENTIALS:
+------------------
+Username: admin
+Password: admin123
+
+OR
+
+Username: librarian
+Password: lib123
+
+========================================
+
+WHAT YOU'LL SEE:
+----------------
+1. Login screen with gradient background
+2. Dashboard with statistics
+3. Tabs for: Books, Members, Issue/Return
+4. Sample data already loaded (10 books, 5 members)
+
+========================================
+
+TROUBLESHOOTING:
+----------------
+- If JavaFX errors occur, the app should still work
+- If port is in use, change it in application.properties
+- Check console for any error messages
+
+========================================
+
+Enjoy your Library Management System! 🎉
+

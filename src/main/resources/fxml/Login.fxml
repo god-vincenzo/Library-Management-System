@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.library.ui.LoginController" styleClass="login-container">
+   <center>
+      <VBox alignment="CENTER" spacing="30.0" styleClass="login-container">
+         <padding>
+            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+         </padding>
+         <children>
+            <VBox alignment="CENTER" spacing="12.0">
+               <children>
+                  <Label text="LIBRARY MANAGEMENT SYSTEM" styleClass="system-title">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <Label text="JARVIS Interface v2.0" styleClass="login-subtitle" />
+                  <Label text="Sign in to continue" styleClass="login-subtitle" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" spacing="20.0" styleClass="login-card" maxWidth="450.0" minWidth="450.0">
+               <padding>
+                  <Insets bottom="45.0" left="45.0" right="45.0" top="45.0" />
+               </padding>
+               <children>
+                  <Label text="AUTHENTICATION" styleClass="login-title">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                  </Label>
+                  <VBox spacing="8.0">
+                     <Label text="Username" styleClass="form-label" />
+                     <TextField fx:id="usernameField" promptText="Enter username" styleClass="text-field" style="-fx-pref-height: 45px;" />
+                  </VBox>
+                  <VBox spacing="8.0">
+                     <Label text="Password" styleClass="form-label" />
+                     <PasswordField fx:id="passwordField" promptText="Enter password" styleClass="password-field" style="-fx-pref-height: 45px;" onAction="#handleLogin" />
+                  </VBox>
+                  <Button onAction="#handleLogin" text="LOGIN" styleClass="button-primary" style="-fx-pref-width: 100%; -fx-pref-height: 45px; -fx-font-size: 16px;" />
+                  <Label text="Default: admin/admin123 or librarian/lib123" styleClass="info-text" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
