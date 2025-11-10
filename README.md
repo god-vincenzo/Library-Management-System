@@ -186,3 +186,8 @@ This project is for educational purposes.
 
 Library Management System - Spring Boot + JavaFX
 
+## Project Report
+
+You can view the project report here:
+
+[Project Report](./Smart%20Library%20Management%20System_PROJECT_REPORT.pdf)
